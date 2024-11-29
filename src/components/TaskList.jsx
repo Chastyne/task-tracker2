@@ -12,7 +12,17 @@ const TaskList = () => {
         taskToEdit={taskToEdit}
         clearEdit={() => setTaskToEdit(null)}
       />
+      <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>
+            <h3>{task.title}</h3>
+            <p>{task.description}</p>
+            <button onClick={() => setTaskToEdit(task)}>Edit</button>
+          </li>
+        ))}
+      </ul>
     </div>
+    
   );
 };
 
