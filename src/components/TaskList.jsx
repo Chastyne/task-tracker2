@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTask } from "./actions";
 import TaskForm from "./TaskForm";
+import { deleteTask } from "../redux/actions";
 
 const TaskList = () => {
   const tasks = useSelector((state) => state.tasks);
