@@ -6,8 +6,7 @@ import TaskList from "./components/TaskList";
 
 const App = () => (
   <Provider store={store}>
-  <div>
-    <h1>Task Manager</h1>
+  <div className='container'>
     <TaskList />
   </div>
 </Provider>

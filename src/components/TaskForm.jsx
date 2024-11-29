@@ -20,7 +20,7 @@ const TaskForm = ({ taskToEdit, clearEdit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px", maxWidth: "400px" }}>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px", maxWidth: "500px",padding:'50px'}}>
       <label>
         Title:
         <input
