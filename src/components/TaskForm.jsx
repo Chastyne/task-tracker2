@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addTask, updateTask } from "../redux/actions";
 import PropTypes from "prop-types";
 
 const TaskForm = ({ taskToEdit, clearEdit }) => {
