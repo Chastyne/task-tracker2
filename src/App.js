@@ -5,10 +5,12 @@ import { Provider } from "react-redux";
 import TaskList from "./components/TaskList";
 
 const App = () => (
-    <div className="App">
-      <h1>Task Tracker</h1>
-      <TaskList/>
-    </div>
+  <Provider store={store}>
+  <div>
+    <h1>Task Manager</h1>
+    <TaskList />
+  </div>
+</Provider>
   );
 
 export default App;
