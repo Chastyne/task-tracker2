@@ -19,7 +19,21 @@ const TaskForm = ({ taskToEdit, clearEdit }) => {
   };
 
   return (
-    
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Task Title"
+        value={task.title}
+        onChange={(e) => setTask({ ...task, title: e.target.value })}
+        required
+      />
+      <textarea
+        placeholder="Task Description"
+        value={task.description}
+        onChange={(e) => setTask({ ...task, description: e.target.value })}
+      />
+      <button type="submit">{taskToEdit ? "Update" : "Add"} Task</button>
+    </form>
   );
 };
 
