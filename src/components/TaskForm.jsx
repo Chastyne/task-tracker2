@@ -2,11 +2,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask, updateTask } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const TaskForm = ({ taskToEdit, clearEdit }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
   const [task, setTask] = useState(taskToEdit || { title: "", description: "" });
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +19,7 @@ const TaskForm = ({ taskToEdit, clearEdit }) => {
     } else {
       dispatch(addTask({ ...task, id: Date.now() }));
     }
-    setTask({ title: "", description: "" });
+    navigate("/dashboard");
   };
 
   return (
@@ -42,7 +45,7 @@ const TaskForm = ({ taskToEdit, clearEdit }) => {
           style={{  alignItems:"center", width: "100%", padding: "8px", marginBottom: "10px" }}
         />
       </label>
-      <button type="submit" style={{ padding: "10px", backgroundColor: "peachpuff", color: "#000", border: "none", borderRadius: "4px" }}>
+      <button type="submit" style={{ padding: "10px", backgroundColor: "#aa8638", color: "#000", border: "none", borderRadius: "4px" }}>
         {taskToEdit ? "Update Task" : "Add Task"}
       </button>
     </form>
