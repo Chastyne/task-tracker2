@@ -1,15 +1,17 @@
 
 import './App.css';
-import store from "./redux/store";
-import { Provider } from "react-redux";
-import TaskList from "./components/TaskList";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+
 
 const App = () => (
-  <Provider store={store}>
-  <div className='container'>
-    <TaskList />
-  </div>
-</Provider>
-  );
+  <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      
+    </Routes>
+  </Router>
+);
 
 export default App;
