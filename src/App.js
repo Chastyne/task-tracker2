@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import TaskForm from './components/TaskForm';
+import Logout from './components/auth/Logout';
 
 const App = () => (
   <Router>
@@ -18,6 +19,7 @@ const App = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/taskform" element={<TaskForm />} /> 
+      <Route path="/logout" element={<Logout />} />
     </Routes>
   </Router>
 );

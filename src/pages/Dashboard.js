@@ -5,6 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useSelector } from "react-redux"; 
 import TaskList from "../components/TaskList"; 
 import { Link } from "react-router-dom"; 
+import { signOut } from "firebase/auth";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null); 
@@ -12,6 +13,14 @@ const Dashboard = () => {
 
   // Fetch tasks from the Redux store
   const tasks = useSelector((state) => state.tasks);
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      alert("You have been logged out.");
+    } catch (err) {
+      console.error("Error logging out:", err.message);
+    }
+  };
 
   useEffect(() => {
     // Listen to auth state changes
@@ -20,7 +29,7 @@ const Dashboard = () => {
         setUser(currentUser); 
       } else {
         setUser(null); 
-        navigate("/login");
+        navigate("/dashboard");
       }
     });
     return () => unsubscribe();
@@ -59,13 +68,40 @@ const Dashboard = () => {
               </button>
             </Link>
           </div>
+          <div style={styles.container}>
+              <button
+               onClick={handleLogout} 
+               style={styles.button}
+              >
+                Logout
+              </button>
+          </div>
         </div>
       ) : (
-        <p>Loading...</p> 
+        <div style={styles.container}>
+        <h1>Welcome to Task Manager Dashboard</h1> 
+        <p>Ready to track all your tasks?</p>
+        <p>Log in to view, add, edit or delete your tasks</p> 
+        </div>
       )}
     </div>
   );
 };
+
+const styles = {
+    container: {
+      textAlign: "center",
+      margin: "20px 0",
+    },
+    button: {
+      padding: "10px 20px",
+      backgroundColor: "#f44336",
+      color: "white",
+      border: "none",
+      borderRadius: "4px",
+      cursor: "pointer",
+    },
+  };
 
 export default Dashboard;
 
